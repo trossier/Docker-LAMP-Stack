@@ -10,6 +10,7 @@ Cette stack contient:
 - GIT
 - COMPOSER 
 - Gestion des logs apache et mysql
+- Behat (En cours)
 
 Structure:
 - doc

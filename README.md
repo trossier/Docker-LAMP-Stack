@@ -6,7 +6,7 @@ Cette stack contient:
 - server Apache 2
 - serveur MySQL 5.7
 - PHP 7.0
-- SonarQube 7.1
+- SonarQube 7.1 (Use ElasticSearch)
 - GIT
 - COMPOSER 
 - Gestion des logs apache et mysql

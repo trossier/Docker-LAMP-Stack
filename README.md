@@ -36,6 +36,7 @@ Structure:
     - sonarqube
         - data
 - www
+    - sonar-project.properties
 
 Pré-requis:
 - Docker

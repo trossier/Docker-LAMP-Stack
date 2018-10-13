@@ -110,7 +110,7 @@ Remplacer le couple Apache / PHP par Nginx / PHP-FPM ;-)
 - etc ....
 
 — SonarQube —
-// Pour lancer le test du code de l'application (il faut avoir au préalable configuré le sonar-project.properties cf partie SonarQube)
+-Pour lancer le test du code de l'application (il faut avoir au préalable configuré le sonar-project.properties cf partie SonarQube)
 docker exec -w=/var/www/ server_apache_php_dev /usr/sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner
 
 — WARNING —
@@ -149,3 +149,4 @@ Bonne lecture
 
 13/10/2018 - TRR
 
+<a href="http://thomasrossier.fr/">http://thomasrossier.fr</a>

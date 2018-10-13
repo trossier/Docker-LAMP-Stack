@@ -3,8 +3,8 @@
 Une stack Docker pour votre application PHP
 
 Cette stack contient:
-- server Apache 2
-- serveur MySQL 5.7
+- Server Apache 2
+- Serveur MySQL 5.7
 - PHP 7.0
 - SonarQube 7.1
 - GIT

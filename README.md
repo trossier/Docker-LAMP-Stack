@@ -1,6 +1,6 @@
 # DOCKER LAMP Stack
 
-<img src="https://sdtimes.com/wp-content/uploads/2015/11/Docker_Euro_Largelogo-1c4ec95d91a66c91f44c831a65d2147d.png" />
+<img style="text-align:center;" src="https://sdtimes.com/wp-content/uploads/2015/11/Docker_Euro_Largelogo-1c4ec95d91a66c91f44c831a65d2147d.png" />
 
 Une stack Docker pour votre application PHP (Version HTML en cours)
 

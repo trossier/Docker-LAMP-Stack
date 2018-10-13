@@ -1,9 +1,4 @@
-# LAMP-Stack
-A complete LAMP stack with SonarQube for continuous code quality and Behat for autotesting your business expectations
 
---------------------------------------------------------------------------------
---------------------------------- Stack LAMP -----------------------------------
---------------------------------------------------------------------------------
 Une stack Docker pour votre application PHP
 
 Cette stack contient:
@@ -72,9 +67,7 @@ Temps de création de la stack: 30 minutes
 Evolution:
 Remplacer le couple Apache / PHP par Nginx / PHP-FPM ;-)
 
---------------------------------------------------------------------------------
-------------------------------- Lancer la stack --------------------------------
---------------------------------------------------------------------------------
+#Lancer la stack
 - Modifier les variables d'environnements dans le fichier .env
 - modifier votre host local avec 127.0.0.1  <nomdedomaine> (/etc/hosts pour mac OS X et Linux)
 - docker-compose up -d // Pour lancer la création de toutes les images et les containers
@@ -82,9 +75,7 @@ Remplacer le couple Apache / PHP par Nginx / PHP-FPM ;-)
 - Go to http://<nomdedomaine>:8080 pour acceder à phpmyadmin
 - Go to http://<nomdedomaine>:32768 pour acceder à SonarQube
 
---------------------------------------------------------------------------------
-------------------------------- Boîte à outils ---------------------------------
---------------------------------------------------------------------------------
+#Boîte à outils
 docker images // Liste toutes les images
 docker ps // Liste tous les containers
 docker rmi -f <image> // Force la suppression d'une image
@@ -108,24 +99,22 @@ docker-compose exec db mysql -uroot -p"root" // Se connecter à MySQL
 docker exec server_mysql_dev /usr/bin/mysqldump --databases -uroot -psecret $DATABASE > $DATABASE.sql //Créer un dump d'une base de données
 
 - COMPOSER-
-docker exec -w=/var/www/project/ server_engine_dev composer install
+docker exec -w=/var/www/EgerieRM/ server_apache_php_dev composer install
 
 - GIT-
-docker exec -w=/var/www/project/ server_engine_dev git branch
-docker exec -w=/var/www/project/ server_engine_dev git status
-docker exec -w=/var/www/project/ server_engine_dev git stash / pop / list / drop
+docker exec -w=/var/www/EgerieRM/ server_apache_php_dev git branch
+docker exec -w=/var/www/EgerieRM/ server_apache_php_dev git status
+docker exec -w=/var/www/EgerieRM/ server_apache_php_dev git stash / pop / list / drop
 etc .... (all git commands)
 
 - SonarQube-
 // Pour lancer le test du code de l'application (il faut avoir au préalable configuré le sonar-project.properties cf partie SonarQube)
-docker exec -w=/var/www/project/ server_sonarqube_dev /usr/sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner
+docker exec -w=/var/www/ server_apache_php_dev /usr/sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner
 
 -- WARNING --
 les comandes avec docker-compose fonctionne aussi avec juste docker mais on appelera plus le service mais le nom du container, cependant j'utilise docker plutôt que docker-compose car l'option -w n'existe pas encore avec la version de docker-compose que j'utilise.
 
---------------------------------------------------------------------------------
--------------------------------- Volumes Docker --------------------------------
---------------------------------------------------------------------------------
+#Volumes Docker
 Créer un fichier en local (machine hôte) ou sur le container aura pour effet de le créer automatiquement de l'autre côté ;-)
 
 Améliorer les performances sur MacOSx
@@ -143,15 +132,10 @@ docker-machine ls
 docker-machine rm my-docker-machine
 utiliser kitematic pour l'ip et le port a utiliser (Pour Mac OS X)
 
---------------------------------------------------------------------------------
----------------------------------- SonarQube -----------------------------------
---------------------------------------------------------------------------------
+#SonarQube
 
 Default login / password => admin / admin
 
---------------------------------------------------------------------------------
----------------------- SonarQube - sonar-project.properties --------------------
---------------------------------------------------------------------------------
 #Fichier sonar-project.properties
 # SonarQube server
 #sonar.host.url=sonarqube:32768 # non du service dans docker-compose.yml
@@ -179,5 +163,4 @@ sonar.sourceEncoding=UTF-8
 # If I want to exclude files or directories
 #sonar.exclusions=**/Tests/**,**/*Extension.php
 sonar.exclusions=src/Tests/**/*.* # on retire des fichiers ou dossiers de l'analyse (dossiers ou fichiers qui doivent être dans le dossier src car on a précédement configuré sonar.sources=src) 
-
 

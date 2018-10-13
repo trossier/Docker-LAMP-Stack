@@ -1,6 +1,6 @@
 FROM debian:9.5
 
-# Ce fichier contient toutes les insctuctions à executer sur le conteneur "server_apache_php_dev" lancé par le service "apache-php" dans le docker-composer.yml
+# Ce fichier contient toutes les instructions à executer sur le conteneur "server_apache_php_dev" lancé par le service "apache-php" dans le docker-composer.yml
 
 MAINTAINER Thomas ROSSIER <fr.thomas.rossier@gmail.com>
 

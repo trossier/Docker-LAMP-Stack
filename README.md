@@ -1,4 +1,4 @@
-# LAMP Stack - DOCKER
+# DOCKER LAMP Stack
 
 Une stack Docker pour votre application PHP (Version HTML en cours)
 

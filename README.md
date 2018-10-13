@@ -154,3 +154,5 @@ Bonne lecture
 TRR - 13/10/2018
 
 <a href="http://thomasrossier.fr/">http://thomasrossier.fr</a>
+
+<img src="https://i1.wp.com/blog.docker.com/wp-content/uploads/contributors-final.png?resize=1140%2C339&ssl=1" />

@@ -1,4 +1,4 @@
-#LAMP Stack
+# LAMP Stack
 
 Une stack Docker pour votre application PHP (Version HTML en cours)
 
@@ -68,7 +68,7 @@ Temps de création de la stack: 30 minutes
 Evolution:
 Remplacer le couple Apache / PHP par Nginx / PHP-FPM ;-)
 
-#Lancer la stack
+# Lancer la stack
 - Modifier les variables d'environnements dans le fichier .env
 - modifier votre host local avec 127.0.0.1  <nomdedomaine> (/etc/hosts pour mac OS X et Linux)
 - docker-compose up -d // Pour lancer la création de toutes les images et les containers
@@ -76,7 +76,7 @@ Remplacer le couple Apache / PHP par Nginx / PHP-FPM ;-)
 - Go to http://<nomdedomaine>:8080 pour acceder à phpmyadmin
 - Go to http://<nomdedomaine>:32768 pour acceder à SonarQube
 
-#Boîte à outils
+# Boîte à outils
 - docker images // Liste toutes les images
 - docker ps // Liste tous les containers
 - docker rmi -f <image> // Force la suppression d'une image
@@ -115,7 +115,7 @@ docker exec -w=/var/www/ server_apache_php_dev /usr/sonar-scanner-3.2.0.1227-lin
 — WARNING —
 les commandes avec docker-compose fonctionne aussi avec juste docker mais on appellera plus le service mais le nom du container, cependant j'utilise docker plutôt que docker-compose car l'option -w n'existe pas encore avec la version de docker-compose que j'utilise.
 
-#Volumes Docker
+# Volumes Docker
 Créer un fichier en local (machine hôte) ou sur le container aura pour effet de le créer automatiquement de l'autre côté ;-)
 
 Améliorer les performances sur MacOSx
@@ -133,7 +133,7 @@ Ci-dessous des articles interessants:
 - docker-machine rm my-docker-machine
 - utiliser kitematic pour l'ip et le port a utiliser (Pour Mac OS X)
 
-#SonarQube
+# SonarQube
 
 Default login / password => admin / admin
 

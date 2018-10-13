@@ -1,0 +1,68 @@
+#version file format compose
+version: '2'
+
+# Le fichier docker-composer.yml permet de gérer plusieurs conteneurs via des services, dans notre
+# cas nous avons 4 conteneurs:
+# server_apache_php_dev (service apache-php) - pour gérer la partie applicative avec apache2 et PHP7.0
+# server_mysql_dev (service mysql) - pour la bdd
+# server_sonarqube_dev (service sonarqube) - pour analyser le code
+# server_phpmyadmin_dev (service phpmyadmin) - pour visualiser la bdd
+
+services:
+    apache-php:
+        container_name: server_apache_php_dev
+        # Installation de PHP et Apache via le Dockerfile, il va chercher le ficher Dockerfile dans engine (si installation classique via une image on appel directement l'image cf mysql)
+        build: ${ROOT}engine/apache-php
+        volumes:
+            # pour le code source de l'application
+            - ${ROOT}www:/var/www:cached
+            # vhosts remplace le dossier site-enabled par notre dossier vhosts
+            - ${ROOT}engine/config/apache2/vhost:/etc/apache2/sites-enabled:cached
+            # Logs
+            - ${ROOT}engine/logs/apache:/var/log/apache2:cached
+        ports:
+            # Port extene a renseigner dans le navigateur: port interne sur lequel va ecouter apache
+            - 83:80
+        restart: always
+        links:
+            # Lien avec un autre conteneur ici conteneur MySQL
+            - mysql
+            # Lien avec un autre conteneur ici conteneur sonarqube
+            - sonarqube
+    mysql:
+        container_name: server_mysql_dev
+        # Installation MySQL directement depuis une image car aucune autre commande à effectuer sinon créer un autre Dockerfile
+        image: mysql:5.7
+        volumes:
+            # Pour persiter les données en BDD
+            - ${ROOT}engine/mysql/data:/var/lib/mysql:cached
+            # Pour surcharger la configuration du my.cnf
+            - ${ROOT}engine/config/mysql:/etc/mysql/conf.d:cached
+            # Logs (need to add line log-error = /var/log/mysql/error.log in my.cnf)
+            - ${ROOT}engine/logs/mysql:/var/log/mysql:cached
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        ports:
+            - 3308:3306
+        restart: always
+    sonarqube:
+        container_name: server_sonarqube_dev
+        # Installation MySQL directement depuis une image car aucune autre commande à effectuer sinon créer un autre Dockerfile
+        image: sonarqube:7.1
+        volumes:
+            - ${ROOT}engine/sonarqube/data:/opt/sonarqube/data:cached
+        ports:
+            - 32768:9000
+        restart: always
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: server_phpmyadmin_dev
+        environment:
+            - PMA_ARBITRARY=1
+        restart: always
+        #server est le nom du service mysql ici server_mysql_dev
+        #<nomdedomaine>:8080 pour acceder à phpmyadmin
+        ports:
+            - 8080:80
+        volumes:
+            - /sessions

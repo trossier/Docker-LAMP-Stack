@@ -101,12 +101,12 @@ Remplacer le couple Apache / PHP par Nginx / PHP-FPM ;-)
 - docker exec server_mysql_dev /usr/bin/mysqldump --databases -uroot -psecret $DATABASE > $DATABASE.sql //Créer un dump d'une base de données
 
 — COMPOSER —
-- docker exec -w=/var/www/EgerieRM/ server_apache_php_dev composer install
+- docker exec -w=/var/www/project/ server_apache_php_dev composer install
 
 — GIT —
-- docker exec -w=/var/www/EgerieRM/ server_apache_php_dev git branch
-- docker exec -w=/var/www/EgerieRM/ server_apache_php_dev git status
-- docker exec -w=/var/www/EgerieRM/ server_apache_php_dev git stash / pop / list / drop
+- docker exec -w=/var/www/project/ server_apache_php_dev git branch
+- docker exec -w=/var/www/project/ server_apache_php_dev git status
+- docker exec -w=/var/www/project/ server_apache_php_dev git stash / pop / list / drop
 - etc ....
 
 — SonarQube —
@@ -147,6 +147,6 @@ Une version HTML devrait bientôt arriver
 
 Bonne lecture
 
-13/10/2018 - TRR
+TRR - 13/10/2018
 
 <a href="http://thomasrossier.fr/">http://thomasrossier.fr</a>

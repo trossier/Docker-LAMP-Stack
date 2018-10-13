@@ -42,6 +42,7 @@ Structure:
 Pré-requis:
 - Docker
 - Docker-compose 
+- Renommer le fichier env.dist en .env (ne pas oublier le point avant)
 - Créer un vhost dans engine/config/apache2/vhost
 - Créer votre application dans le dossier www (si vous souhaitez changer le chemin du volume il faut modifier le docker-compose.yml)
 - Créer le fichier sonar-project.properties à la racine du projet PHP - contenu du fichier section SonarQube (ci-dessous)
